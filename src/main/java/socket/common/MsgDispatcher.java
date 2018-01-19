@@ -39,8 +39,8 @@ public class MsgDispatcher {
 	 * @param gameSession
 	 * @param clientRequest
      */
-	public void dispatchMsg( GameSession gameSession,String message) {
-		int msgCode = JsonUtilTool.fromJson(message, Messgae.class).getMsgCode();
+	public void dispatchMsg(GameSession gameSession,String message) {
+		int msgCode=JsonUtilTool.fromJson(message, Messgae.class).getMsgCode();
 		MsgProcessor processor = getMsgProcessor(msgCode);
 		if(processor instanceof INotAuthProcessor){
 			processor.handle(gameSession, message);

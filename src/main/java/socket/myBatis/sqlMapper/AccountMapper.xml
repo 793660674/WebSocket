@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="socket.myBatis.dao.AccountMapper">
+	<delete id="deleteByExample">
+		delete from account where id=#{id}
+	</delete>
+	
+	<select id="selectAccountByOpenid" parameterType="java.lang.String" resultType="socket.pro.Account">
+		select
+		*
+		from account
+		 where openid = #{openid}  LIMIT 0,1
+	</select>
+	
+	<update id="updateAccount" parameterType="socket.pro.Account">
+		update account
+		<set>
+			<if test="money != null">
+				money = #{money,},
+			</if>
+			<if test="catheticnum != null">
+				catheticnum = #{catheticnum},
+			</if>
+			<if test="pandl != null">
+				pandl = #{pandl},
+			</if>
+			<if test="phonenum != null">
+				phonenum = #{phonenum},
+			</if>
+		</set>
+		where id = #{id,jdbcType=INTEGER}
+	</update>
+
+	<insert id="insetcathectic" parameterType="socket.pro.Cathectic">
+		insert into cathectic
+		(userid,
+		money, createtime, iswin,
+		pandl)
+		values
+		(#{userid},
+		#{money},
+		#{createtime},
+		#{iswin},
+		#{pandl})
+	</insert>
+</mapper>

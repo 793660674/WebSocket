@@ -1,23 +1,19 @@
 package socket.pro;
 
-import com.alibaba.fastjson.JSON;
-
-public class Messgae {
+public class LoginMsg {
 	private int msgCode;
-	private String messgae;
-	
+	private Account  messgae;
 	public int getMsgCode() {
 		return msgCode;
 	}
 	public void setMsgCode(int msgCode) {
 		this.msgCode = msgCode;
 	}
-	public String getMessgae() {
+	public Account getAccount() {
 		return messgae;
 	}
-	public void setMessgae(String messgae) {
-		this.messgae = messgae;
+	public void setAccount(Account account) {
+		this.messgae = account;
 	}
-	
 	
 }

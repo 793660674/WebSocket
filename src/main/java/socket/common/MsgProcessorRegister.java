@@ -1,6 +1,7 @@
 package socket.common;
 
 import socket.context.ConnectAPI;
+import socket.msg.request.Cathectic.CathecticMsgProcessor;
 import socket.msg.request.login.LoginMsgProcessor;
 
 /**
@@ -11,7 +12,9 @@ import socket.msg.request.login.LoginMsgProcessor;
  */
 public enum MsgProcessorRegister {
 	/** 登陆处理器 */
-	login(ConnectAPI.LOGIN_REQUEST,new LoginMsgProcessor());
+	login(ConnectAPI.LOGIN_REQUEST,new LoginMsgProcessor()),
+	/** 下注处理器*/
+	xiazhu(ConnectAPI.CATHECTIC_REQUEST,new CathecticMsgProcessor());
 	
 	
 

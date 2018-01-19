@@ -4,6 +4,8 @@ import java.io.IOException;
 
 import javax.websocket.Session;
 
+import com.alibaba.fastjson.JSON;
+
 import net.sf.json.JSONObject;
 import socket.manager.GameSessionManager;
 import socket.pro.Messgae;
@@ -37,13 +39,13 @@ public class GameSession {
 	 * @throws IOException 
 	 * @throws InterruptedException 
 	 */
-	public void sendMsg(Messgae msg) throws IOException  {
+	public void sendMsg(Object msg) throws IOException  {
 		if (session == null) {
 			//system.out.println("session == "+session+" session.isConnected ==  "+session.isConnected()+" session.isClosing =  "+session.isClosing());
 			return;
 		}
-		
-		  this.session.getBasicRemote().sendText(JsonUtilTool.toJson(msg));
+		System.out.println(JSON.toJSONString(msg));
+		  this.session.getBasicRemote().sendText(JSON.toJSONString(msg));
 	}
 	
 

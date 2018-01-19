@@ -3,12 +3,20 @@ package socket;
 import java.io.IOException;
 import java.util.concurrent.CopyOnWriteArraySet;
 
-import javax.websocket.*;
+import javax.websocket.OnClose;
+import javax.websocket.OnError;
+import javax.websocket.OnMessage;
+import javax.websocket.OnOpen;
+import javax.websocket.Session;
 import javax.websocket.server.ServerEndpoint;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import socket.bootstrap.GameServer;
 import socket.manager.GameSessionManager;
 import socket.session.GameSession;
+import socket.util.JsonUtilTool;
 
 
 /**
@@ -17,6 +25,7 @@ import socket.session.GameSession;
  */
 @ServerEndpoint("/websocket")
 public class WebSocketTest {
+	private static final Logger logger = LoggerFactory.getLogger(WebSocketTest.class);  
     //静态变量，用来记录当前在线连接数。应该把它设计成线程安全的。
     private static int onlineCount = 0;
 
@@ -35,6 +44,7 @@ public class WebSocketTest {
         this.session = session;
         webSocketSet.add(this);     //加入set中
         addOnlineCount();           //在线数加1
+        logger.error("我在测试");
         System.out.println("有新连接加入！当前在线人数为" + getOnlineCount());
     }
 
@@ -55,6 +65,7 @@ public class WebSocketTest {
      */
     @OnMessage
     public void onMessage(String message, Session session) {
+    	try {
         System.out.println("来自客户端的消息:" + message);
         if (!GameSessionManager.getInstance().checkSessionIsHava(session)) {
         	 System.out.println("我是第一次发的消息，没有我的gamesession我要创建一个:" + message);
@@ -62,6 +73,14 @@ public class WebSocketTest {
 		}
         GameSession gameSession = GameSessionManager.getInstance().getGameSessionBySession(session);
         GameServer.msgDispatcher.dispatchMsg(gameSession, message);
+    	} catch (Exception e) {
+			try {
+				session.getBasicRemote().sendText("传输参数格式出现错误");
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+		}
     }
 
     /**
