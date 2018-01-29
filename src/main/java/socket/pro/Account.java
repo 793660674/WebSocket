@@ -13,6 +13,7 @@ public class Account {
 	private int catheticnum;//下注次数
 	private String pandl;//盈亏
 	private String phonenum;//手机号码
+	private String password;
 
 	public int getId() {
 		return id;
@@ -105,6 +106,14 @@ public class Account {
 		this.pandl=Nowpandl+"";
 		
 		this.catheticnum+=1;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
 	}
 	
 	

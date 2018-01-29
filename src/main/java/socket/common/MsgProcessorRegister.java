@@ -2,7 +2,9 @@ package socket.common;
 
 import socket.context.ConnectAPI;
 import socket.msg.request.Cathectic.CathecticMsgProcessor;
+import socket.msg.request.bangding.BangDIngMsgProcessor;
 import socket.msg.request.login.LoginMsgProcessor;
+import socket.msg.request.login.PasswordLoginMsgProcessor;
 
 /**
  * 消息处理器注册类，所有的消息处理器，都在此注册实例化
@@ -13,6 +15,10 @@ import socket.msg.request.login.LoginMsgProcessor;
 public enum MsgProcessorRegister {
 	/** 登陆处理器 */
 	login(ConnectAPI.LOGIN_REQUEST,new LoginMsgProcessor()),
+	password(ConnectAPI.PHONELOGIN_REQUEST,new PasswordLoginMsgProcessor()),
+	
+	bangding(ConnectAPI.BANGDING_REQUEST,new BangDIngMsgProcessor()),
+	
 	/** 下注处理器*/
 	xiazhu(ConnectAPI.CATHECTIC_REQUEST,new CathecticMsgProcessor());
 	

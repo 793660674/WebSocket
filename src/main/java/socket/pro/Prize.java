@@ -2,7 +2,7 @@ package socket.pro;
 
 public class Prize {
 	private int id;
-	private int prize_name;
+	private int prizename;
 	private int probability;
 	private String money;
 
@@ -14,12 +14,12 @@ public class Prize {
 		this.id = id;
 	}
 
-	public int getPrize_name() {
-		return prize_name;
+	public int getPrizename() {
+		return prizename;
 	}
 
-	public void setPrize_name(int prize_name) {
-		this.prize_name = prize_name;
+	public void setPrizename(int prizename) {
+		this.prizename = prizename;
 	}
 
 	public int getProbability() {

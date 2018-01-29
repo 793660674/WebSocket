@@ -81,5 +81,22 @@ public class AccountDaoImp implements AccountMapper {
 	        }
 		return flag;
 	}
+	@Override
+	public Account selectAccountByPassword(Account account) {
+
+		Account flag = null ;
+	        SqlSession sqlSession = sqlSessionFactory.openSession();
+	        try {
+	            AccountMapper mapper = sqlSession.getMapper(AccountMapper.class);
+	            flag = mapper.selectAccountByPassword(account);
+	            sqlSession.commit();
+	        } catch (Exception e) {
+	            e.printStackTrace();
+	        }finally {
+	            sqlSession.close();
+	        }
+		return flag;
+	
+	}
 
 }

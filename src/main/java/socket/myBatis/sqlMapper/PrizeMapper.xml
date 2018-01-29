@@ -4,7 +4,7 @@
 	<!-- 获取所有正常的奖品信息 -->
 	<select id="selectAllPrizes" resultType="socket.pro.Prize">
 		select
-		id, prize_name,probability,money
+		id, prizename,probability,money
 		from prize
 	</select>
 	<!--<update id="updateByPrimaryKeySelective" parameterType="com.dyz.myBatis.model.Prize">

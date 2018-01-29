@@ -17,7 +17,7 @@ import socket.pro.Prize;
 public  abstract class PrizeProbability {
 
 	public static List<Integer> prizeList = new ArrayList<Integer>();
-	public static  HashMap<Integer, String> prizesMap=new HashMap<>();
+	public static  HashMap<Integer, String> prizesMap=new HashMap<Integer, String>();
 	
 	/**
 	 * 初始化奖品概率

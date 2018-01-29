@@ -12,4 +12,7 @@ public interface AccountMapper {
     
     Account selectAccountByOpenid(String openid);
     
+    
+    Account selectAccountByPassword(Account account);
+    
 }

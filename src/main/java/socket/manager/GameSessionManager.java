@@ -17,6 +17,7 @@ public class GameSessionManager {
     public static int topOnlineAccountCount = 0;
     
     private static GameSessionManager gameSessionManager;
+    
 
     public GameSessionManager(){
 

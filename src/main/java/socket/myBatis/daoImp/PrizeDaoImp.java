@@ -22,7 +22,7 @@ public class PrizeDaoImp implements PrizeMapper {
         this.sqlSessionFactory = sqlSessionFactory;
     }
 	@Override
-	public List<Prize> selectAllPrizes() {
+	public List<Prize> selectAllPrizes(){
 		List<Prize> flag = null ;
 	        SqlSession sqlSession = sqlSessionFactory.openSession();
 	        try {

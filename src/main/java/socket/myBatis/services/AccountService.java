@@ -63,4 +63,15 @@ public class AccountService {
         }
         return null;
     }
+    
+    public Account selectAccountByPassword(Account account){
+        try {
+           Account acc= accMap.selectAccountByPassword(account);
+           return acc;
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return null;
+    }
+    
 }

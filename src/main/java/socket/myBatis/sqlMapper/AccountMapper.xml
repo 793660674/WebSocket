@@ -27,6 +27,9 @@
 			<if test="phonenum != null">
 				phonenum = #{phonenum},
 			</if>
+			<if test="password != null">
+				password = #{password},
+			</if>
 		</set>
 		where id = #{id,jdbcType=INTEGER}
 	</update>
@@ -43,4 +46,12 @@
 		#{iswin},
 		#{pandl})
 	</insert>
+	
+	<select id="selectAccountByPassword" parameterType="socket.pro.Account" resultType="socket.pro.Account">
+		select
+		*
+		from account
+		 where phonenum = #{phonenum} and password=#{password}  LIMIT 0,1
+	</select>
+	
 </mapper>
